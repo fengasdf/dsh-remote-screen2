@@ -53,10 +53,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fengasdf/dsh-remote-screen.git"
+    "url": "git+https://github.com/fengasdf/dsh-remote-screen2.git"
   },
-  "homepage": "https://github.com/fengasdf/dsh-remote-screen#readme",
+  "homepage": "https://github.com/fengasdf/dsh-remote-screen2#readme",
   "bugs": {
-    "url": "https://github.com/fengasdf/dsh-remote-screen/issues"
+    "url": "https://github.com/fengasdf/dsh-remote-screen2/issues"
   }
 }

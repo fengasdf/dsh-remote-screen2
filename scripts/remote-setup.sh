@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Prepare a Linux host (Ubuntu/Debian) for the dsh-remote-screen plugin.
 #
-#   curl -fsSL https://raw.githubusercontent.com/fengasdf/dsh-remote-screen/main/scripts/remote-setup.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/fengasdf/dsh-remote-screen2/main/scripts/remote-setup.sh | bash
 #   # or, after npm install:
 #   bash node_modules/dsh-remote-screen/scripts/remote-setup.sh
 #

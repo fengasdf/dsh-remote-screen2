@@ -48,7 +48,7 @@ dsh plugin add dsh-remote-screen
 
 ```bash
 # 在远端 Linux 上执行（Ubuntu/Debian）
-curl -fsSL https://raw.githubusercontent.com/fengasdf/dsh-remote-screen/main/scripts/remote-setup.sh | bash
+curl -fsSL https://raw.githubusercontent.com/fengasdf/dsh-remote-screen2/main/scripts/remote-setup.sh | bash
 ```
 
 脚本会安装 `guacd`、`libguac-client-rdp0`、`libguac-client-vnc0`、`x11vnc`，把 guacd 监听改为 `0.0.0.0:4822`，并用 x11vnc 镜像当前控制台会话到 `127.0.0.1:5900`。
