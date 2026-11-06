@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>远程桌面</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; }
+      body {
+        background: #0b0c0f;
+        color: #e7e9ee;
+        font: 13px/1.5 "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 12px;
+        background: #14161b;
+        border-bottom: 1px solid #23262e;
+        flex: none;
+      }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: #6b7280; flex: none; }
+      .dot.connecting { background: #d6a13a; animation: pulse 1.2s ease-in-out infinite; }
+      .dot.connected { background: #3fb950; }
+      .dot.error { background: #f85149; }
+      @keyframes pulse { 50% { opacity: 0.35; } }
+      .title { font-weight: 600; font-size: 13px; }
+      .target { color: #9aa3b2; font-size: 12px; }
+      .spacer { flex: 1; }
+      button {
+        appearance: none;
+        border: 1px solid #2c313b;
+        background: #1b1e25;
+        color: #d7dbe3;
+        border-radius: 6px;
+        padding: 5px 11px;
+        font: inherit;
+        cursor: pointer;
+      }
+      button:hover { background: #232833; border-color: #3a4150; }
+      button:disabled { opacity: 0.45; cursor: default; }
+      #stage {
+        position: relative;
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        background: #0b0c0f;
+        overflow: hidden;
+      }
+      #hint {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        z-index: 5;
+        display: none;
+        width: 440px;
+        max-width: calc(100% - 24px);
+        padding: 11px 13px;
+        border-radius: 10px;
+        background: rgba(20, 22, 27, 0.95);
+        border: 1px solid #3a4150;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        color: #e7e9ee;
+      }
+      #hint.visible { display: block; }
+      #hint .hint-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+      #hint .hint-body { font-size: 12px; line-height: 1.65; color: #a8b0bd; }
+      #hint button {
+        margin-top: 9px;
+        border-color: #3a4150;
+        background: #262b34;
+        color: #e7e9ee;
+      }
+      #display { line-height: 0; box-shadow: 0 0 0 1px #23262e; background: #000; }
+      #display canvas { display: block; }
+      #status {
+        flex: none;
+        padding: 6px 12px;
+        background: #101217;
+        border-top: 1px solid #1d2027;
+        color: #9aa3b2;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      #status.bad { color: #ff8f87; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span id="dot" class="dot connecting"></span>
+      <span class="title" id="title">远程桌面</span>
+      <span class="target" id="target"></span>
+      <span class="spacer"></span>
+      <button id="reconnect" type="button" disabled>重新连接</button>
+      <button id="fullscreen" type="button">全屏</button>
+      <button id="close" type="button">关闭窗口</button>
+    </header>
+    <div id="stage">
+      <div id="display" tabindex="-1"></div>
+      <div id="hint">
+        <div class="hint-title">在画面中登录 xrdp</div>
+        <div class="hint-body">
+          先点一下画面，让键盘输入进入远端；然后在下方的 xrdp 登录框里输入用户名和密码（鼠标、键盘都会发送到远端）。
+        </div>
+        <button id="hint-ok" type="button">知道了，开始输入</button>
+      </div>
+    </div>
+    <div id="status">正在准备…</div>
+    <script src="./guacamole.js"></script>
+    <script type="module" src="./viewer.js"></script>
+  </body>
+</html>

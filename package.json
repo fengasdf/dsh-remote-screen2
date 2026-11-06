@@ -1,0 +1,62 @@
+{
+  "name": "dsh-remote-screen",
+  "version": "0.1.0",
+  "description": "Remote Linux desktops in the DSH Web UI: an xrdp RDP session or a live VNC mirror of the console, in draggable multi-windows backed by guacd.",
+  "type": "module",
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "remote-desktop",
+    "rdp",
+    "vnc",
+    "xrdp",
+    "guacamole",
+    "screen-sharing"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "lib",
+    "viewer",
+    "scripts",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.0-rc.1 <0.3.0"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fengasdf/dsh-remote-screen.git"
+  },
+  "homepage": "https://github.com/fengasdf/dsh-remote-screen#readme",
+  "bugs": {
+    "url": "https://github.com/fengasdf/dsh-remote-screen/issues"
+  }
+}

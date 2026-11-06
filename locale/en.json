@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Remote desktop",
+    "description": "Open a saved SSH machine's xrdp desktop in a browser window (RDP over TLS) with live mouse and keyboard control."
+  }
+}

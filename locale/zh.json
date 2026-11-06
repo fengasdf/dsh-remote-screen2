@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "远程桌面",
+    "description": "从已保存的 SSH 机器打开浏览器内的 xrdp 桌面窗口（RDP over TLS），鼠标键盘可直接操作。"
+  }
+}
